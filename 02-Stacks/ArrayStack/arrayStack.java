@@ -15,7 +15,7 @@ public class arrayStack<Item> {
   }
 
   public void push(Item item) {
-    // if the array is 100% full, double the size of the array. 
+    // if the array is 100% full, double the size of the array.
     if (N == stack.length) {
       resize(2 * stack.length);
     }
@@ -24,13 +24,17 @@ public class arrayStack<Item> {
   }
 
   public Item pop() {
+    if (isEmpty()) {
+      return null;
+    }
+    // remove the first item on the list
     // Decrement N and store the item
     Item item = stack[--N];
     // Set the current array index to null to delete the item
     stack[N] = null;
     // if the array is less than 25% full, decrease the size of the array by half
-    if (N > 0 && N == stack.length/4){
-      resize(stack.length/2);
+    if (N > 0 && N == stack.length / 4) {
+      resize(stack.length / 2);
     }
     return item;
   }
@@ -43,7 +47,7 @@ public class arrayStack<Item> {
     stack = copy;
   }
 
-  public static void main(String[] args){
+  public static void main(String[] args) {
     arrayStack<String> words = new arrayStack<>(1);
     words.push("Food");
     words.push("Water");

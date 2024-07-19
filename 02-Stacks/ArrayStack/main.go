@@ -24,6 +24,7 @@ func (s *ArrayStack[T]) Pop() T {
 		return zeroValue // return the zero value of the item if the stack is empty
 	}
 
+	// remove the first item on the list
 	item := s.stack[len(s.stack)-1]    // store the last element
 	s.stack = s.stack[:len(s.stack)-1] // removes the last element
 	return item

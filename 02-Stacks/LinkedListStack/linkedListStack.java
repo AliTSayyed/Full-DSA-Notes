@@ -5,39 +5,43 @@ public class linkedListStack<Item> {
   private Node first = null;
   private int size;
 
-  private class Node{
+  private class Node {
     Item item;
     Node next;
   }
-  public boolean isEmpty(){
+
+  public boolean isEmpty() {
     return first == null;
   }
 
-  void push(Item item){
-    // create a node to store the previous head node
+  void push(Item item) {
+    // store the head
     Node oldFirst = first;
-    // overwrite first node with a new null Node
+    // create a new head
     first = new Node();
     // set value of new Node to the item
-    first.item = item; 
-    // point the new Node to the stored Node. First will now become the new Head. 
+    first.item = item;
+    // point the new head to the old head.
     first.next = oldFirst;
-    // increase the size by 1
+    // keep track of the size
     size++;
   }
 
   public Item pop() {
+    if (isEmpty()) {
+      return null;
+    }
+    // remove the first item on the list
     // retrieve the item at the first Node (Head)
     Item item = first.item;
-    // delete the node by setting it equal to its next node. 
+    // delete the node by setting it equal to its next node.
     first = first.next;
-    // decrement the size 
+    // decrement the size
     size--;
     return item;
   }
 
- 
-  public int size(){
+  public int size() {
     return size;
   }
 
